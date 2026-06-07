@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\User\source\repos\Deploy\django_drf3-master\env2"
+VIRTUAL_ENV="C:\Users\User\source\repos\Rest\django_drf3-master\env2"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

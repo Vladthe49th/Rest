@@ -1,1 +1,1 @@
-web: gunicorn Rest.wsgi
+web: gunicorn django_drf3-master.wsgi:application
