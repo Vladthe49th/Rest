@@ -2,6 +2,9 @@
 using Azure.Data.Tables;
 using Azure.Storage.Blobs;
 
+using Microsoft.EntityFrameworkCore;
+using ItemsAPI.Data;
+
 namespace ItemsAPI
 {
     public class Program
@@ -9,6 +12,12 @@ namespace ItemsAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+         options.UseSqlServer(
+        builder.Configuration.GetConnectionString("AzureSql")));
+
 
             // Отримуємо рядок підключення з appsettings.json
             string? connectionString =
