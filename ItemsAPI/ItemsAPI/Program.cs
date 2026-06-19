@@ -20,22 +20,22 @@ namespace ItemsAPI
 
 
             // Отримуємо рядок підключення з appsettings.json
-            string? connectionString =
-                builder.Configuration["AzureStorage:ConnectionString"];
+            //string? connectionString =
+            //    builder.Configuration["AzureStorage:ConnectionString"];
 
-            if (string.IsNullOrEmpty(connectionString))
-            {
-                throw new Exception(
-                    "Azure Storage Connection String не знайдено!");
-            }
+            //if (string.IsNullOrEmpty(connectionString))
+            //{
+            //    throw new Exception(
+            //        "Azure Storage Connection String не знайдено!");
+            //}
 
             // Реєстрація Azure Blob Storage
-            builder.Services.AddSingleton(
-                new BlobServiceClient(connectionString));
+            //builder.Services.AddSingleton(
+            //    new BlobServiceClient(connectionString));
 
-            // Реєстрація Azure Table Storage
-            builder.Services.AddSingleton(
-                new TableServiceClient(connectionString));
+            //// Реєстрація Azure Table Storage
+            //builder.Services.AddSingleton(
+            //    new TableServiceClient(connectionString));
 
             // Стандартні сервіси ASP.NET Core
             builder.Services.AddControllers();
