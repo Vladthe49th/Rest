@@ -5,6 +5,9 @@ using Azure.Storage.Blobs;
 using Microsoft.EntityFrameworkCore;
 using ItemsAPI.Data;
 
+using ItemsAPI.Configuration;
+using ItemsAPI.Services;
+
 namespace ItemsAPI
 {
     public class Program
@@ -13,11 +16,16 @@ namespace ItemsAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
             builder.Services.AddDbContext<AppDbContext>(options =>
-         options.UseSqlServer(
-        builder.Configuration.GetConnectionString("AzureSql")));
+                options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("AzureSql")));
 
+            builder.Services.Configure<AzureTranslatorOptions>(
+                builder.Configuration.GetSection("AzureTranslator"));
+
+            builder.Services.AddHttpClient();
+
+            builder.Services.AddScoped<ITranslatorService, TranslatorService>();
 
             // Отримуємо рядок підключення з appsettings.json
             //string? connectionString =
